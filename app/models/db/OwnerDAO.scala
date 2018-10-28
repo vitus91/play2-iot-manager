@@ -70,7 +70,7 @@ class SlickOwnerDAO @Inject()(db: Database)(implicit ec: ExecutionContext) exten
        l.map(s => {
          val newSeq = company match {
            case Some(name: String) => s.filter(obj => {
-             obj.company.get == name
+             obj.company.getOrElse("") == name
            })
            case None => s
          }
@@ -89,7 +89,7 @@ class SlickOwnerDAO @Inject()(db: Database)(implicit ec: ExecutionContext) exten
     f.map( seq => {
       val newSeq = company match {
         case Some(name: String) => seq.filter( obj => {
-          obj.company.get == name
+          obj.company.getOrElse("") == name
         })
         case None => seq
       }

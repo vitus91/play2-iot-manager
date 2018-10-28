@@ -10,6 +10,14 @@ DELETE              /v1/owners/:id                         controllers.OwnerCont
 PATCH               /v1/owners                             controllers.OwnerController.patchOwner
 PUT                 /v1/owners                             controllers.OwnerController.putOwner
 
+# Devices
+GET                 /v1/devices                             controllers.DeviceController.devices(owner: Option[Long], startIndex: Option[Int], endIndex: Option[Int], showDeleted: Option[Boolean])
+POST                /v1/devices                             controllers.DeviceController.postDevice
+GET                 /v1/devices/:id                         controllers.DeviceController.getDevice(id : Long, showDeleted: Option[Boolean])
+DELETE              /v1/devices/:id                         controllers.DeviceController.deleteDevice(id : Long)
+PATCH               /v1/devices                             controllers.DeviceController.patchDevice
+PUT                 /v1/devices                             controllers.DeviceController.putDevice
+
 # Map static resources from the /public folder to the /assets URL path
 GET                 /assets/*file                           controllers.Assets.versioned(path="/public", file: Asset)
 

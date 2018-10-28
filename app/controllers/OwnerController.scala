@@ -89,7 +89,7 @@ class OwnerController @Inject()(cc: ControllerComponents, ownerDAO:  OwnerDAO)
     code=200
   )
   @ApiResponses(Array(
-    new ApiResponse(code = 200, message= "OK", reference = "Owner", responseContainer = "JSON"),
+    new ApiResponse(code = 200, message= "OK", reference = "OwnerDTO", responseContainer = "JSON"),
     new ApiResponse(code = 404, message= "Id not found"),
     new ApiResponse(code = 500, message = "Internal Server Error")))
   def getOwner(@ApiParam(name = "id",value="Long", required = true )id: Long, @ApiParam(name = "showDeleted",value="Show owner if it is deleted", required = false )showDeleted: Option[Boolean]) = Action.async { implicit request =>
@@ -111,7 +111,7 @@ class OwnerController @Inject()(cc: ControllerComponents, ownerDAO:  OwnerDAO)
     code=200
   )
   @ApiResponses(Array(
-    new ApiResponse(code = 200, message= "Created", reference = "Owner", responseContainer = "JSON"),
+    new ApiResponse(code = 200, message= "Created", reference = "OwnerDTO", responseContainer = "JSON"),
     new ApiResponse(code = 500, message = "Internal Server Error")))
   @ApiImplicitParams(Array(
     new ApiImplicitParam(name = "Object", value = "models.api.OwnerDTO", required = true, dataType = "models.api.OwnerDTO", paramType = "body")
