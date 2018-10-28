@@ -3,12 +3,12 @@
 # ~~~~
 
 # Contacts
-GET                 /v1/contact                             controllers.ContactController.contacts(lastName: Option[String], startIndex: Option[Int], endIndex: Option[Int], showDeleted: Option[Boolean])
-POST                /v1/contact                             controllers.ContactController.postContact
-GET                 /v1/contact/:id                         controllers.ContactController.getContact(id : Long, showDeleted: Option[Boolean])
-DELETE              /v1/contact/:id                         controllers.ContactController.deleteContact(id : Long)
-PATCH               /v1/contact                             controllers.ContactController.patchContact
-PUT                 /v1/contact                             controllers.ContactController.putContact
+GET                 /v1/owners                            controllers.OwnerController.owners(lastName: Option[String], startIndex: Option[Int], endIndex: Option[Int], showDeleted: Option[Boolean])
+POST                /v1/owners                             controllers.OwnerController.postOwner
+GET                 /v1/owners/:id                         controllers.OwnerController.getOwner(id : Long, showDeleted: Option[Boolean])
+DELETE              /v1/owners/:id                         controllers.OwnerController.deleteOwner(id : Long)
+PATCH               /v1/owners                             controllers.OwnerController.patchOwner
+PUT                 /v1/owners                             controllers.OwnerController.putOwner
 
 # Map static resources from the /public folder to the /assets URL path
 GET                 /assets/*file                           controllers.Assets.versioned(path="/public", file: Asset)

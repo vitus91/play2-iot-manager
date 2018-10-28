@@ -3,13 +3,13 @@ import io.swagger.annotations._
 
 
 @ApiModel
-case class PagedContactData(
-                              @ApiModelProperty(name = "data", dataType = "List[models.api.Contact]", value = "List of Contacts")
-                              data: Contact,
-                              @ApiModelProperty(name = "prev", dataType = "String", value = "Api endpoint for previous Page")
+case class PagedOwnerData(
+                           @ApiModelProperty(name = "data", dataType = "List[models.api.OwnerDTO]", value = "List of Owners")
+                              data: OwnerDTO,
+                           @ApiModelProperty(name = "prev", dataType = "String", value = "Api endpoint for previous Page")
                               prev: String,
-                              @ApiModelProperty(name = "next", dataType = "String", value = "Api endpoint for next Page")
+                           @ApiModelProperty(name = "next", dataType = "String", value = "Api endpoint for next Page")
                               next: String,
-                              @ApiModelProperty(name = "count", dataType = "Long", value = "Number of all aviable Contacts")
+                           @ApiModelProperty(name = "count", dataType = "Long", value = "Number of all available Owners")
                               count: Long
                             )

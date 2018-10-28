@@ -22,13 +22,13 @@ class FunctionalSpec extends PlaySpec with BaseOneAppPerSuite with TestApplicati
 
   implicit val nilReader = Json.reads[scala.collection.immutable.Nil.type]
   implicit val nilWriter = Json.writes[scala.collection.immutable.Nil.type]
-  implicit val contactdReader = Json.reads[Contact]
-  implicit val contactdWriter = Json.writes[Contact]
+  implicit val contactdReader = Json.reads[OwnerDTO]
+  implicit val contactdWriter = Json.writes[OwnerDTO]
   implicit val dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 
   "App" should {
     "work with postgres Database" in {
-      val future = route(app, FakeRequest(GET, "/v1/contact")).get
+      val future = route(app, FakeRequest(GET, "/v1/owners")).get
       status(future) mustEqual 200
     }
   }

@@ -22,8 +22,8 @@ class Module(environment: Environment,
              configuration: Configuration) extends AbstractModule {
   override def configure(): Unit = {
     bind(classOf[Database]).toProvider(classOf[DatabaseProvider])
-    bind(classOf[ContactDAO]).to(classOf[SlickContactDAO])
-    bind(classOf[ContactDAOCloseHook]).asEagerSingleton()
+    bind(classOf[OwnerDAO]).to(classOf[SlickOwnerDAO])
+    bind(classOf[OwnerDAOCloseHook]).asEagerSingleton()
     bind(classOf[FlywayMigrator]).asEagerSingleton()
   }
 }
@@ -49,7 +49,7 @@ class DatabaseProvider @Inject() (config: Config) extends Provider[Database] {
 }
 
 /** Closes database connections safely.  Important on dev restart. */
-class ContactDAOCloseHook @Inject()(dao: ContactDAO, lifecycle: ApplicationLifecycle) {
+class OwnerDAOCloseHook @Inject()(dao: OwnerDAO, lifecycle: ApplicationLifecycle) {
   lifecycle.addStopHook { () =>
     Future.successful(dao.close())
   }
