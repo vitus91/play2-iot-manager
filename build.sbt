@@ -67,8 +67,8 @@ slickGen := Def.taskDyn(generateTablesTask((dbConf  in Global).value)).value
 
 lazy val root = (project in file("."))
   .dependsOn(slick)
-  //enable this for k8s .enablePlugins(PlayScala, SbtReactiveAppPlugin)
-  .enablePlugins(PlayScala, DockerPlugin) //disable this when not using docker compose
+  .enablePlugins(PlayScala, SbtReactiveAppPlugin)
+  //.enablePlugins(PlayScala, DockerPlugin) //disable this when not using docker compose
   .settings(
     dbConfSettings,
     libraryDependencies ++= Dependencies.list
@@ -77,11 +77,10 @@ lazy val root = (project in file("."))
     maintainer := "innFactorySchool",
     version := buildVersion,
     packageName := "innfactory/iot-manager",
-    /* just with sbtReactiveAppPlugin for k8s
     endpoints += HttpEndpoint("http", HttpIngress(Vector(80, 443), Vector.empty, Vector.empty)),
     deployMinikubeRpArguments ++= Vector(
       "--ingress-annotation", "ingress.kubernetes.io/rewrite-target=/"
-    ),*/
+    ),
     dockerUpdateLatest := latest, //change to latest val
     //dockerRepository := Some("eu.gcr.io"),
     dockerExposedPorts := Seq(9000, 9000)

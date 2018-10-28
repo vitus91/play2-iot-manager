@@ -39,8 +39,8 @@ class FlywayMigrator @Inject()(env: Environment, configuration: Configuration) {
   val password =  configuration.get[String]("bootstrapplay2.database.password")
   val flyway = new Flyway
   flyway.setDataSource(new DriverDataSource(env.classLoader, driver, url, user, password, new Properties()))
-  //on k8s with sbtReactivePlugin flyway.setLocations("filesystem:modules/flyway/src/main/resources/db/migration")
-  flyway.setLocations("filesystem:/opt/docker/conf/migration")
+  flyway.setLocations("filesystem:modules/flyway/src/main/resources/db/migration")
+  //for docker compose flyway.setLocations("filesystem:/opt/docker/conf/migration")
   Logger.info("Flyway/Migrate")
   flyway.migrate()
   flyway.info().all().map(a => Logger.info(a.getChecksum.toString.concat(" ".concat(a.getDescription))).toString)
